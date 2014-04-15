@@ -1,28 +1,14 @@
-== README
+== A Simple Test-Driven Ruby on Rails To-Do List Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 2.0/Rails 4
 
-Things you may want to cover:
+This is a simple To-Do List style application with users being able to create multiple lists, add tasks to lists and share lists.
+I'm using Aaron Sumner's brilliant book 'Everyday Rails Testing with RSpec' to get more familiarised with test driven development.
 
-* Ruby version
+Notable Gems Used:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* RSpec
+* Devise
+* Factory Girl
+* PostgreSQL
+* Bootstrap Generator
