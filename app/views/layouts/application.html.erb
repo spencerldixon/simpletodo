@@ -28,12 +28,45 @@
         </button>
         <%= link_to "Simple To Do", "#", :class => "navbar-brand" %>
       </div>
+
+      <!--Left Navbar Menu -->
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><%= link_to 'Sign in', new_user_session_path %></li>
-          <li><%= link_to 'Not a member? Sign Up!', new_user_registration_path %></li>
+          <% if user_signed_in? %>
+            <!--Lists-->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Lists<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'View All Lists', lists_path %></li>
+                <li><%= link_to 'Create a New List', new_list_path %></li>
+                <li><%= link_to 'Email a List', share_list_path %></li>
+              </ul>
+            </li>
+            <!--Tasks-->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Tasks<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Create New Task</a></li>
+                <li><a href="#">View all Tasks</a></li>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      
+
+      <!-- Right Navbar Menu -->
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><p class="navbar-text">Hello <%= current_user.email %></p></li>
+            <li><%= link_to 'Sign Out', new_user_registration_path %></li>
+            <li><%= link_to 'Settings', root_path %></li>
+          <% else %>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <li><%= link_to 'Register a new Account', new_user_registration_path %></li>
+          <% end %>
         </ul>
       </div>
+
     </div>
   </div>
   <div class="container">

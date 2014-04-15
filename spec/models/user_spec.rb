@@ -23,5 +23,9 @@ describe User do
 			FactoryGirl.create(:user, email: "test@test.com")
 			expect(FactoryGirl.build(:user, email: "test@test.com")).to have(1).errors_on(:email)
 		end
+
+		it "fails validation with passwords less than 8 characters" do
+			expect(FactoryGirl.build(:user, password: "1234567")).to have(1).errors_on(:password)
+		end
 	end
 end
