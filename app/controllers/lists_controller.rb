@@ -32,6 +32,14 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    @list = List.find(params[:id])
+
+    if @list.present?
+      @list.destroy
+      flash[:success] = "List deleted successfully!"
+    end
+
+    redirect_to lists_path
   end
 
   # Custom Methods

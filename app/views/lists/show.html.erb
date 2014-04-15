@@ -1,3 +1,4 @@
 <div class="page-header">
   <h1><%= @list.name %></h1>
+  <h3><%= link_to "Delete this list", @list, method: :delete, data: { confirm: "Are you sure?" } %></h3>
 </div>
