@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :task do
+  	sequence(:name) { |n| "Test task #{n}" }
+  	boolean false
   end
 end

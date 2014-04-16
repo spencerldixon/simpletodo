@@ -20,21 +20,5 @@ describe List do
 		expect(FactoryGirl.build(:list, name: "This is valid")).to be_valid
 	end
 
-
 	it "is assigned to the user who creates it"
-
-	#Move these to the controller?
-	context "Creating a list" do
-  		it "is created successfully"
-  	end
-
-	context "Editing a list" do
-		it "is renamed successfully"
-	end
-
-	context "Deleting a list" do
-		it "destroys the list successfully"
-		it "destroys all assosciated tasks successfully"
-		it "decreases the users list count by one"
-	end
 end
