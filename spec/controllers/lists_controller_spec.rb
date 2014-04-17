@@ -3,14 +3,14 @@ require 'spec_helper'
 describe ListsController do
   context "When logged in" do
     before :each do
-      user = FactoryGirl.create(:user)
-      sign_in user
+      @user = FactoryGirl.create(:user)
+      sign_in @user
     end
 
     describe "on GET request to the Index action" do
-      it "returns an array of lists" do
-        first_list = FactoryGirl.create(user, :list)
-        second_list = FactoryGirl.create(:list)
+      it "returns an array of lists specific to the current user" do
+        first_list = FactoryGirl.create(:list, user: @user)
+        second_list = FactoryGirl.create(:list, user: @user)
 
         get :index
         expect(assigns(:lists)).to match_array([first_list, second_list])
@@ -65,13 +65,28 @@ describe ListsController do
 
     describe "on POST request to the Create action" do
       context "with valid attributes" do
-        it "saves the new list to the database"
-        it "redirects to the Show template"
+        it "saves the new list to the database" do
+          expect{
+            post :create, list: FactoryGirl.attributes_for(:list)
+            }.to change(List, :count).by(1)
+        end
+        it "redirects to the Show template" do
+          post :create, list: FactoryGirl.attributes_for(:list)
+          expect(response).to redirect_to list_path
+        end
       end
 
       context "with invalid attributes" do
-        it "does not save to the database"
-        it "re-renders the New template"
+        it "does not save to the database" do
+          expect{
+            post :create, list: FactoryGirl.attributes_for(:invalid_list)
+            }.to_not change(List, :count)
+        end
+
+        it "re-renders the New template" do
+          post :create, list: FactoryGirl.attributes_for(:invalid_list)
+          expect(response).to render_template :new
+        end
       end
     end
 
