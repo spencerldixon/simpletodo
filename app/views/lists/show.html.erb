@@ -2,3 +2,11 @@
   <h1><%= @list.name %></h1>
   <h3><%= link_to "Rename this List", edit_list_path(@list) %> | <%= link_to "Delete this list", @list, method: :delete, data: { confirm: "Are you sure?" } %></h3>
 </div>
+
+<% if @list.tasks.any? %>
+	<%= @list.tasks.each do |task| %>
+		<%= task.done %> - <%= task.name %><br>
+	<% end %>
+<% else %>
+	<p>You have no tasks yet, would you like to <%= link_to "add one?", new_task_path %></p>
+<% end %>

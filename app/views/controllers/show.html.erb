@@ -1,0 +1,17 @@
+<div class="page-header">
+  <%= link_to controllers_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_controller_path(@controller), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show controller</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Tasks:</dt>
+  <dd><%= @controller.Tasks %></dd>
+
+</dl>

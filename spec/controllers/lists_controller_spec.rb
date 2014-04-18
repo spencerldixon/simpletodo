@@ -91,7 +91,6 @@ describe ListsController do
       end
     end
 
-
     describe "on PATCH request to the Update action" do
       context "with valid attributes" do
         it "locates the requested @list"
