@@ -14,10 +14,10 @@ class ListsController < ApplicationController
 
     if @list.save
       flash[:success] = "List created successfully!"
-      redirect_to lists_path
+      redirect_to @list
     else
       flash[:danger] = "There was an error saving the list, please try again"
-      redirect_to lists_path
+      render 'new'
     end
   end
 

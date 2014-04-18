@@ -72,7 +72,7 @@ describe ListsController do
         end
         it "redirects to the Show template" do
           post :create, list: FactoryGirl.attributes_for(:list)
-          expect(response).to redirect_to list_path
+          expect(response).to redirect_to list_path(assigns[:list])
         end
       end
 
