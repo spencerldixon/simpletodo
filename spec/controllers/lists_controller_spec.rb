@@ -5,6 +5,8 @@ describe ListsController do
     before :each do
       @user = FactoryGirl.create(:user)
       sign_in @user
+
+      @list = FactoryGirl.create(:list, name: "Test List")
     end
 
     describe "on GET request to the Index action" do
@@ -61,7 +63,6 @@ describe ListsController do
         expect(response).to render_template :edit
       end
     end
-  
 
     describe "on POST request to the Create action" do
       context "with valid attributes" do
@@ -93,9 +94,31 @@ describe ListsController do
 
     describe "on PATCH request to the Update action" do
       context "with valid attributes" do
+        it "locates the requested @list"
+        it "changes the lists attributes" do
+          patch :update, id: @list, list: FactoryGirl.attributes_for(:list, name: "Changed list name")
+          @list.reload
+          expect(@list.name).to eq("Changed list name")
+        end
+
+        it "redirects to the updated list" do
+          patch :update, id: @list, list: FactoryGirl.attributes_for(:list)
+          expect(response).to redirect_to @list
+        end
       end
 
       context "with invalid attributes" do
+        it "does not change the lists attributes" do
+          patch :update, id: @list, list: FactoryGirl.attributes_for(:list, name: nil)
+          @list.reload
+          expect(@list.name).to_not eq(nil)
+          expect(@list.name).to eq("Test List")
+        end
+
+        it "redirects to the edit template" do
+          patch :update, id: @list, list: FactoryGirl.attributes_for(:invalid_list)
+          expect(response).to render_template :edit
+        end
       end
     end
 
