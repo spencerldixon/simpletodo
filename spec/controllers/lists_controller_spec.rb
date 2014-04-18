@@ -123,7 +123,16 @@ describe ListsController do
     end
 
     describe "on DELETE request to the Destroy action" do
-      it "returns http success"
+      it "deletes the list" do
+        expect{
+          delete :destroy, id: @list
+        }.to change(List, :count).by(-1)
+      end
+
+      it "redirects to the index action" do
+        delete :destroy, id: @list
+        expect(response).to redirect_to lists_path
+      end
     end
   end
 
