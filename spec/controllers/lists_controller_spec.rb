@@ -93,7 +93,11 @@ describe ListsController do
 
     describe "on PATCH request to the Update action" do
       context "with valid attributes" do
-        it "locates the requested @list"
+        it "locates the requested @list" do
+          patch :update, id: @list, list: FactoryGirl.attributes_for(:list)
+          expect(assigns(:list)).to eq(@list)
+        end
+
         it "changes the lists attributes" do
           patch :update, id: @list, list: FactoryGirl.attributes_for(:list, name: "Changed list name")
           @list.reload
