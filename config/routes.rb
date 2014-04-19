@@ -1,13 +1,5 @@
 SimpleToDo::Application.routes.draw do
-  resources :controllers
-
-  get "tasks/index"
-  get "tasks/new"
-  get "tasks/create"
-  get "tasks/show"
-  get "tasks/edit"
-  get "tasks/update"
-  get "tasks/destroy"
+  resources :tasks
   resources :lists
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

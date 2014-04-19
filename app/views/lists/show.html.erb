@@ -4,8 +4,8 @@
 </div>
 
 <% if @list.tasks.any? %>
-	<%= @list.tasks.each do |task| %>
-		<%= task.done %> - <%= task.name %><br>
+	<% @list.tasks.each do |task| %>
+		<%= task.name %> | <%= task.completed %><br>
 	<% end %>
 <% else %>
 	<p>You have no tasks yet, would you like to <%= link_to "add one?", new_task_path %></p>
