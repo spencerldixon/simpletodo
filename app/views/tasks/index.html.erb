@@ -1,0 +1,6 @@
+<div class="page-header">
+  <h1>All Your Tasks...</h1>
+</div>
+<% @tasks.each do |task| %>
+	<%= task.name %> | <%= task.completed %><br>
+<% end %>

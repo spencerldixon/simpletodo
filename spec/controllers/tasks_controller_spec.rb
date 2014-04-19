@@ -2,9 +2,27 @@ require 'spec_helper'
 
 describe TasksController do
 	context "when logged in with a valid user" do
+		before :each do
+			@user = FactoryGirl.create(:user)
+			sign_in @user
+		end
+
 		describe "on GET request to the Index action" do
-			it "returns an array of all tasks assosciated to the current user assigned to @tasks regardless of list"
-			it "renders that index template"
+			it "returns an array of all tasks assosciated to the current user assigned to @tasks regardless of list" do
+				list_one = FactoryGirl.create(:list, user: @user)
+				list_two = FactoryGirl.create(:list, user: @user)
+
+				task_one = FactoryGirl.create(:task, list: list_one)
+				task_two = FactoryGirl.create(:task, list: list_two)
+
+				get :index
+				expect(assigns(:tasks)).to match_array([task_one, task_two])
+			end
+
+			it "renders that index template" do
+				get :index
+				expect(response).to render_template :index
+			end
 		end
 
 		describe "on GET request to the New action" do
