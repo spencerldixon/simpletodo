@@ -26,19 +26,43 @@ describe TasksController do
 		end
 
 		describe "on GET request to the New action" do
-			it "assigns a new task to @task"
-			it "renders the new template"
+			it "assigns a new task to @task" do
+				get :new
+				expect(assigns(:task)).to be_a_new(task)
+			end
+
+			it "renders the new template" do
+				get :new
+				expect(response).to render_template :new
+			end
 		end
 
 		describe "on GET request to the Edit action" do
-			it "assigns the correct task to @task"
-			it "renders the edit template"
+			it "assigns the correct task to @task" do
+				task = FactoryGirl.create(:task)
+				get :edit, id: task
+				expect(assign(:task)).to eq task
+			end
+
+			it "renders the edit template" do
+				task = FactoryGirl.create(:task)
+				get :edit, id: task
+				expect(response).to render_template :edit
+			end
 		end
 
 		describe "on POST request to the Create action" do
 			context "with valid information" do
-				it "adds a new task to the database"
-				it "redirects to the show template of the tasks list"
+				it "adds a new task to the database" do
+					expect{
+						post :create, task: FactoryGirl.attributes_for(:task)
+						}.to change(Task, :count).by(1)
+				end
+
+				it "redirects to the show template of the tasks list" do
+					post :create, task: FactoryGirl.attributes_for(:task)
+					expects(response).to redirect_to list_path(assigns(:list))
+				end
 			end
 
 			context "with invalid information" do
