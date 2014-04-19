@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Task do
-  it "is valid with a name, 'completed' status, and an associated user" do
+  it "is valid with a name, 'completed' status, and an associated list" do
   	expect(FactoryGirl.build(:task)).to be_valid
   end
 
-  it "fails validation without an associated user" do
-  	expect(FactoryGirl.build(:task, user_id: nil)).to have(1).errors_on(:user_id)
+  it "fails validation without an associated list" do
+  	expect(FactoryGirl.build(:task, list_id: nil)).to have(1).errors_on(:list_id)
   end
 
   it "fails validation without a name" do

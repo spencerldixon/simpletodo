@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :task do
   	sequence(:name) { |n| "Test task #{n}" }
   	completed false
+  	association :list
   end
 end
