@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'bootstrap-generators', '~> 3.1.1'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'pg', '~> 0.17.1'
 gem 'devise', '~> 3.2.4'
 

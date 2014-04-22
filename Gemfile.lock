@@ -28,8 +28,8 @@ GEM
     addressable (2.3.6)
     arel (4.0.2)
     bcrypt (3.1.7)
-    bootstrap-generators (3.1.1.2)
-      railties (>= 3.1.0)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -164,7 +164,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-generators (~> 3.1.1)
+  bootstrap-sass (~> 3.1.1)
   capybara (~> 2.1.0)
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.0.1)
