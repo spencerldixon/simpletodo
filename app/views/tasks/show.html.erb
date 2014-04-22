@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1><%= @task.name %></h1>
+  <h3><%= link_to "Rename this Task", edit_task_path(@task) %> | <%= link_to "Delete this task", @task, method: :delete, data: { confirm: "Are you sure?" } %></h3>
+</div>
+
+Name: <%= @task.name %><br>
+Completed?: <%= @task.completed %><br>
+List: <%= @task.list %><br>

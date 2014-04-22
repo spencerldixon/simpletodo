@@ -1,3 +1,28 @@
 <div class="page-header">
-  <h1>Add a new Task to <%= @list.name %></h1>
+  <h1> 
+  	<% if @list %>
+  		Add a new Task to <%= @list.name %>
+  	<% else %>
+  		Create a new task
+  	<% end %>
+  </h1>
 </div>
+
+<%= form_for(@task) do |t| %>
+	<div>
+	  	<%= t.label :name %>
+	  	<%= t.text_field :name %>
+	</div>
+
+	<div>
+		<%= t.label :completed %>
+	 	<%= t.check_box :completed %>
+	</div>
+
+	<div>
+		<%= t.label :list_id %>
+  		<%= t.text_field :list_id %>
+	</div>
+
+ 	<%= t.submit "Create Task", class: "btn btn-primary" %>
+<% end %>
