@@ -1,8 +1,21 @@
 <div class="page-header">
   <h1>Update this Task</h1>
 </div>
-<%= form_for(@task) do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<%= f.submit "Update", class: "btn btn-primary" %>
+<%= form_for(@task) do |t| %>
+	<div>
+	  	<%= t.label :name %>
+	  	<%= t.text_field :name %>
+	</div>
+
+	<div>
+		<%= t.label :completed %>
+	 	<%= t.check_box :completed %>
+	</div>
+
+	<div>
+		<%= t.label :list_id %>
+  		<%= t.text_field :list_id %>
+	</div>
+
+ 	<%= t.submit "Update", class: "btn btn-primary" %>
 <% end %>

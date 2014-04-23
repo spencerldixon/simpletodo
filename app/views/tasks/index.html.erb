@@ -1,6 +1,24 @@
 <div class="page-header">
-  <h1>All Your Tasks...</h1>
+  <h1>Your Tasks</h1>
+  <h3><i>You have <%= pluralize(@tasks.count, 'task') %></i></h3>
 </div>
-<% @tasks.each do |task| %>
-	<%= task.name %> | <%= task.completed %><br>
-<% end %>
+
+<table class="table">
+	<tr>
+		<th>Task</th>
+		<th>List<th>
+		<th>Completed?</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+
+	<% @tasks.each do |task| %>
+		<tr>
+			<td><%= task.name %></td>
+			<td><%= task.list.name %></td>
+			<td><%= task.completed %></td>
+			<td><%= link_to "Edit", edit_task_path(task) %></td>
+			<td><%= link_to "Delete", task, method: :delete, data: { confirm: "Are you sure? You cannot undo this action" } %></td>
+		</tr>
+	<% end %>
+</table>

@@ -3,6 +3,20 @@
   <h3><i>You have <%= pluralize(@lists.count, 'list') %></i></h3>
 </div>
 
-<% @lists.each do |list| %>
-	<h4><%= link_to list.name, list %><h4>
-<% end %>
+<table class="table">
+	<tr>
+		<th>List</th>
+		<th>Tasks</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+
+	<% @lists.each do |list| %>
+		<tr>
+			<td><%= link_to list.name, list %></td>
+			<td><%= list.tasks.count %></td>
+			<td><%= link_to "Edit", edit_list_path(list) %></td>
+			<td><%= link_to "Delete", list, method: :delete, data: { confirm: "Are you sure? You cannot undo this action" } %></td>
+		</tr>
+	<% end %>
+</table>

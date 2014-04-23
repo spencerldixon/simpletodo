@@ -4,9 +4,19 @@
 </div>
 
 <% if @list.tasks.any? %>
-	<% @list.tasks.each do |task| %>
-		<%= task.name %> | <%= task.completed %><br>
-	<% end %>
+	<table class="table">
+		<tr>
+			<th>Task</th>
+			<th>Completed?</th>
+		</tr>
+
+		<% @list.tasks.each do |task| %>
+			<tr>
+				<td><%= task.name %></td>
+				<td><%= task.completed %></td>
+			</tr>
+		<% end %>
+	</table>
 <% else %>
-	<p>You have no tasks yet, would you like to <%= link_to "add one?", new_task_path %></p>
+	<h4>You have no tasks yet, would you like to <%= link_to "add one?", new_task_path %></h4>
 <% end %>
