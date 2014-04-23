@@ -1,0 +1,6 @@
+<%= simple_form_for(@task, html: {class: 'form-horizontal' }) do |f| %>
+	<%= f.input :name, label: 'Task Name' %>
+	<%= f.input :completed, label: 'Completed?' %>
+  	<%= f.input :list_id, collection: @lists, group_method: :name %>
+	<div class="col-lg-2"></div><%= f.button :submit %>
+<% end %>

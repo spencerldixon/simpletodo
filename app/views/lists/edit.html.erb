@@ -1,8 +1,5 @@
 <div class="page-header">
   <h1>Rename this List</h1>
 </div>
-<%= form_for(@list) do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<%= f.submit "Rename", class: "btn btn-primary" %>
-<% end %>
+
+<%= render 'form' %>

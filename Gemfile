@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'pg', '~> 0.17.1'
 gem 'devise', '~> 3.2.4'
+gem 'simple_form', '~> 3.0.2'
 
 gem 'rails', '4.0.1'
 gem 'sass-rails', '~> 4.0.0'
