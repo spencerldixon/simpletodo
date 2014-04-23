@@ -5,6 +5,7 @@ class TasksController < ApplicationController
 	
 	def new
 		@task = current_user.tasks.build
+		@lists = current_user.lists
 	end
 
 	def create
@@ -19,8 +20,13 @@ class TasksController < ApplicationController
 		end
 	end
 
+	def show
+		@task = Task.find(params[:id])
+	end
+
 	def edit
 		@task = Task.find(params[:id])
+		@lists = current_user.lists
 	end
 
 	def update

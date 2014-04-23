@@ -21,7 +21,7 @@
 
 	<div>
 		<%= t.label :list_id %>
-  		<%= t.text_field :list_id %>
+  		<%= t.collection_select :list_id, @lists, :id, :name %>
 	</div>
 
  	<%= t.submit "Create Task", class: "btn btn-primary" %>
