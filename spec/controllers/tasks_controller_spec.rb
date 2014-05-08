@@ -28,7 +28,7 @@ describe TasksController do
 		describe "on GET request to the New action" do
 			it "assigns a new task to @task" do
 				get :new
-				expect(assigns(:task)).to be_a_new(task)
+				expect(assigns(:task)).to be_a_new(Task)
 			end
 
 			it "renders the new template" do
@@ -41,7 +41,7 @@ describe TasksController do
 			it "assigns the correct task to @task" do
 				task = FactoryGirl.create(:task)
 				get :edit, id: task
-				expect(assign(:task)).to eq task
+				expect(assigns(:task)).to eq task
 			end
 
 			it "renders the edit template" do
@@ -57,6 +57,10 @@ describe TasksController do
 					expect{
 						post :create, task: FactoryGirl.attributes_for(:task)
 						}.to change(Task, :count).by(1)
+
+					#expect{
+            		#	post :create, list: FactoryGirl.attributes_for(:list)
+            		#	}.to change(List, :count).by(1)
 				end
 
 				it "redirects to the show template of the tasks list" do

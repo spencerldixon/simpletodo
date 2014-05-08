@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 20140415205049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "lists", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,6 +35,17 @@ ActiveRecord::Schema.define(version: 20140415205049) do
     t.string   "name"
     t.boolean  "completed",  default: false
     t.integer  "list_id"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.date     "date"
+    t.string   "name"
+    t.decimal  "deposit",     precision: 8, scale: 2
+    t.decimal  "withdrawal",  precision: 8, scale: 2
+    t.decimal  "balance",     precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id",                         default: 0
   end
 
   create_table "users", force: true do |t|
