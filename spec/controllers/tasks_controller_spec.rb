@@ -53,9 +53,13 @@ describe TasksController do
 
 		describe "on POST request to the Create action" do
 			context "with valid information" do
+				before :each do
+					@list = FactoryGirl.create(:list)
+				end
+
 				it "adds a new task to the database" do
 					expect{
-						post :create, task: FactoryGirl.attributes_for(:task)
+						post :create, task: FactoryGirl.attributes_for(:task, list_id: @list)
 						}.to change(Task, :count).by(1)
 
 					#expect{
@@ -64,8 +68,11 @@ describe TasksController do
 				end
 
 				it "redirects to the show template of the tasks list" do
-					post :create, task: FactoryGirl.attributes_for(:task)
-					expects(response).to redirect_to list_path(assigns(:list))
+					post :create, task: FactoryGirl.attributes_for(:task, list_id: @list)
+					expect(response).to redirect_to task_path(assigns(:task))
+
+					#post :create, list: FactoryGirl.attributes_for(:list)
+          			#expect(response).to redirect_to list_path(assigns[:list])
 				end
 			end
 
